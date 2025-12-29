@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  # 监听 main 分支，一有 push 就运行
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 检出代码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. 安装 Node.js 环境
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3. 安装依赖并打包
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      # 4. 把打包好的 dist 文件夹推送到 gh-pages 分支
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
