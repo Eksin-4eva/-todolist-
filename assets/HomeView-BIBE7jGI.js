@@ -1,1 +1,0 @@
-import{_ as t}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{c as r,a as o,F as n,o as s}from"./index-DtOERvW9.js";const l={};function a(m,e){return s(),r(n,null,[e[0]||(e[0]=o("h1",null,"todo-list",-1)),e[1]||(e[1]=o("p",null,"Vue3练习",-1))],64)}const c=t(l,[["render",a]]);export{c as default};
