@@ -1,11 +1,15 @@
-import { createRouter, createWebHistory } from 'vue-router'
+// 1. 引入 createWebHashHistory (注意多了个 Hash)
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // 2. 使用 Hash 模式，这里不需要传参数了
+  history: createWebHashHistory(), 
+  
   routes: [
+    // ... 你的路由规则保持不变 ...
     {
       path: '/',
-      redirect: '/todo' // 打开直接跳到 todo 吧，方便看效果
+      redirect: '/todo'
     },
     {
       path: '/home',
@@ -15,13 +19,13 @@ const router = createRouter({
     {
       path: '/todo',
       name: 'todo',
-      component: () => import('../views/TodoView.vue') // 我们马上创建这个文件
+      component: () => import('../views/TodoView.vue')
     },
     {
       path: '/time',
       name: 'time',
-      component: () => import('../views/Time.vue') // 我们马上创建这个文件
-    },
+      component: () => import('../views/Time.vue')
+    }
   ]
 })
 
