@@ -1,12 +1,12 @@
-// 1. 引入 createWebHashHistory (注意多了个 Hash)
-import { createRouter, createWebHashHistory } from 'vue-router'
+// 1. 换回 createWebHistory
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
-  // 2. 使用 Hash 模式，这里不需要传参数了
-  history: createWebHashHistory(), 
+  // 🌟 核心修改：必须把 BASE_URL 传进去！
+  // 这样路由才知道你是部署在 /-todolist-/ 这个子目录下
+  history: createWebHistory(import.meta.env.BASE_URL),
   
   routes: [
-    // ... 你的路由规则保持不变 ...
     {
       path: '/',
       redirect: '/todo'
